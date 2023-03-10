@@ -1,0 +1,14 @@
+version: "3"
+services:
+  firebase-emulator:
+    container_name: firebase-emulator
+    image: spine3/firebase-emulator:latest
+    volumes:
+      - ./firebase-emulator:/firebase
+    ports:
+      - 8000:8000 # firestore
+      - 4000:4000 # ui
+      - 9099:9099 # auth
+      - 8085:8085 # pubsub
+      - 9005:9005 # firebase login redirect
+    entrypoint: ["firebase", "emulators:start"]
